@@ -23,7 +23,7 @@
 <header>
   <nav class="mayus">
     <a href="#trabajos">Trabajos</a>
-    
+    <a href="#archivo">Archivo</a>
     <a href="#sobre">Sobre mí</a>
     <a href="#contacto">Contacto</a>
   </nav>
@@ -47,7 +47,12 @@
     </div>
   </section>
 
-  
+  <!-- Archivo: imágenes sueltas (lista «archivo» de proyectos.json) -->
+  <section id="archivo">
+    <div class="cab"><h2 class="titulo">Archivo</h2></div>
+    <div class="archivo"><figure><img src="img/archivo/web/trail-21k.jpg" alt="Trail 21k" loading="lazy"><figcaption class="mayus">Trail 21k</figcaption></figure><figure><img src="img/archivo/web/pego-trail.jpg" alt="Pego trail" loading="lazy"><figcaption class="mayus">Pego trail</figcaption></figure></div>
+  </section>
+
   <!-- 3. Sobre mí -->
   <section id="sobre">
     <div class="cab"><h2 class="titulo">Sobre mí</h2></div>
@@ -88,5 +93,13 @@
 </main>
 
 
+<dialog class="visor" aria-label="Pieza ampliada">
+  <button class="redondo cerrar" type="button" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  <button class="redondo ant" type="button" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <figure><img alt=""></figure>
+  <button class="redondo sig" type="button" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg></button>
+  <p class="pie mayus"><span class="nombre-pieza"></span><span class="cuenta"></span></p>
+</dialog>
+<script src="visor.js"></script>
 </body>
 </html>

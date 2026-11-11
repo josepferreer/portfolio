@@ -1,119 +1,63 @@
 /* Intink: Inter Tight con tinta corrida (Desktop/intink). Las uniones entre letras
    salen de la función calt y del espaciado propio de la fuente: no ponerle letter-spacing. */
 @font-face{font-family:"Intink";font-weight:700;font-display:swap;src:url(fuentes/Intink-Bold.woff) format("woff")}
-@font-face{font-family:"Intink";font-weight:400;font-display:swap;src:url(fuentes/Intink-Regular.woff) format("woff")}
+
 :root{
-    --papel:#ECE8E3;
-    --tinta:#141414;
-    --gris:#77736C;
-    --linea:#CFC9C0;
-    --g:clamp(24px,12vw,260px);
-    --titular:"Inter Tight", "Instrument Sans", system-ui, sans-serif;
-    --titulo:"Intink", "Inter Tight", system-ui, sans-serif;   /* títulos: la fuente con tinta */
-    --sans:"Instrument Sans", system-ui, sans-serif;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--papel);color:var(--tinta);font:15px/1.5 var(--sans)}
-  a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%}
-  .mayus{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+  --papel:#ECE8E3;
+  --tinta:#141414;
+  --gris:#77736C;
+  --linea:#CFC9C0;
+  --g:clamp(24px,12vw,260px);                                    /* margen lateral */
+  --titular:"Inter Tight", "Instrument Sans", system-ui, sans-serif;  /* frases y textos */
+  --titulo:"Intink", "Inter Tight", system-ui, sans-serif;           /* títulos: la fuente con tinta */
+  --sans:"Instrument Sans", system-ui, sans-serif;                   /* texto pequeño y etiquetas */
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--papel);color:var(--tinta);font:15px/1.5 var(--sans)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.mayus{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
 
-  header{display:flex;justify-content:flex-end;padding:18px var(--g)}
-  header nav{display:flex;gap:28px}
+/* ---------- portada ---------- */
+header{display:flex;justify-content:flex-end;padding:18px var(--g)}
+header nav{display:flex;gap:28px}
 
-  .portada{min-height:calc(100svh - 56px);display:grid;place-content:center;text-align:center;gap:clamp(22px,3vw,40px);padding:0 var(--g) 56px}
-  .portada .logo{width:min(78vw,1180px);height:auto;margin:0 auto}
-  .portada p{margin:0;line-height:1.9}
-  .portada .debajo{font-weight:600}
-  .portada .debajo span{display:block;font-weight:400}
+.portada{min-height:calc(100svh - 56px);display:grid;place-content:center;text-align:center;gap:clamp(22px,3vw,40px);padding:0 var(--g) 56px}
+.portada .logo{width:min(78vw,1180px);height:auto;margin:0 auto}
+.portada p{margin:0;line-height:1.9}
+.portada .debajo{font-weight:600}
+.portada .debajo span{display:block;font-weight:400}
 
-  section{padding:0 var(--g);margin-top:clamp(80px,10vw,160px)}
-  .cab{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;border-top:1px solid var(--tinta);padding-top:18px;margin-bottom:clamp(28px,4vw,56px)}
-  .titulo{font:700 clamp(40px,6vw,100px)/.92 var(--titulo);margin:0}
+section{padding:0 var(--g);margin-top:clamp(80px,10vw,160px)}
+.cab{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;border-top:1px solid var(--tinta);padding-top:18px;margin-bottom:clamp(28px,4vw,56px)}
+.titulo{font:700 clamp(40px,6vw,100px)/.92 var(--titulo);margin:0}
 
-  .rejilla{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(36px,4vw,64px) clamp(16px,2vw,28px)}
-  .proyecto.grande{grid-column:1 / -1}
-  .hueco{aspect-ratio:4/3;border:1px dashed var(--linea)}
-  .grande .hueco{aspect-ratio:21/9}
-  .pie-proy{display:grid;grid-template-columns:auto 1fr auto;gap:18px;padding-top:14px;color:var(--gris)}
-
-  .sobre{display:grid;grid-template-columns:6fr 1fr 5fr;gap:28px}
-  .sobre .texto{grid-column:1}
-  .sobre .lista{grid-column:3}
-  .hueco-texto{height:12px;background:var(--linea);margin-bottom:14px}
-
-  .contacto{padding-bottom:28px}
-  .hablemos{display:block;text-align:center;font:700 21.5cqw/.85 var(--titulo);white-space:nowrap;padding:clamp(20px,3vw,40px) 0 clamp(28px,4vw,56px)}
-  .pie{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px 28px;border-top:1px solid var(--linea);padding-top:16px}
-  .pie div{display:flex;gap:10px 28px;flex-wrap:wrap}
-
-  @media (max-width:760px){
-    .rejilla{grid-template-columns:1fr}
-    .sobre{grid-template-columns:1fr}
-    .sobre .lista{grid-column:1}
-  }
-
-/* ---------- tarjeta con carteles (portada) ---------- */
-a.proyecto{display:block}
-.lienzo-carteles{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,1.2vw,20px);padding:clamp(16px,2.4vw,40px);background:#1C2014}
-.lienzo-carteles img{width:100%;aspect-ratio:3508/4961;object-fit:cover}
+/* pie de cada tarjeta: número, nombre y año */
+.pie-proy{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:baseline;padding-top:14px;color:var(--gris)}
 .pie-proy .nombre{color:var(--tinta);font:700 clamp(22px,2vw,30px)/1 var(--titulo);letter-spacing:0;text-transform:none}
-.pie-proy{align-items:baseline}
 .etiquetas{margin:6px 0 0;color:var(--gris)}
 
-/* ---------- página de proyecto ---------- */
-.cab-proy{display:flex;justify-content:space-between;align-items:center;padding:18px var(--g)}
-.cab-proy .volver{display:inline-flex;align-items:center;gap:10px}
-.cab-proy .marca{height:16px;width:auto}
-.portada-proy{padding:clamp(48px,8vw,120px) var(--g) clamp(28px,4vw,56px)}
-.portada-proy .titulo-proy{font:700 clamp(64px,12vw,200px)/.88 var(--titulo);margin:0}
-.portada-proy .lema{font:400 clamp(20px,2.2vw,32px)/1.2 var(--titular);letter-spacing:-.01em;margin:clamp(16px,2vw,28px) 0 0}
-.franja{background:#1C2014;padding:clamp(20px,3vw,48px) var(--g);display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,1.2vw,20px)}
-.franja img{width:100%;aspect-ratio:3508/4961;object-fit:cover}
+.sobre{display:grid;grid-template-columns:6fr 1fr 5fr;gap:28px}
+.sobre .texto{grid-column:1}
+.sobre .lista{grid-column:3}
 
-.ficha{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:24px 28px;padding:clamp(28px,4vw,56px) var(--g) 0}
-.ficha div{border-top:1px solid var(--linea);padding-top:12px}
-.ficha dt{color:var(--gris);margin-bottom:6px}
-.ficha dd{margin:0;line-height:1.6}
-.ficha a{text-decoration:underline;text-underline-offset:3px}
-
-.contexto{display:grid;grid-template-columns:4fr 8fr;gap:28px;padding:clamp(64px,8vw,120px) var(--g) 0}
-.contexto p{margin:0;font:400 clamp(20px,2.2vw,32px)/1.3 var(--titular);letter-spacing:-.01em}
-.contexto p+p{margin-top:.7em}
-
-.parte{margin-top:clamp(80px,10vw,160px)}
-.parte .cab{align-items:baseline}
-.parte .cab .num{color:var(--gris)}
-.parte .nota{color:var(--gris);max-width:none;margin:0}
-.dos{display:grid;grid-template-columns:7fr 5fr;gap:clamp(16px,2vw,28px);align-items:start}
-.dos img{width:100%}
-.lado{display:grid;gap:22px}
-.lado div{border-top:1px solid var(--linea);padding-top:12px}
-.lado p{margin:6px 0 0;color:var(--gris)}
-.paleta{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.paleta span{display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:1;padding:8px;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
-.carteles-rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(16px,2vw,28px)}
-.carteles-rejilla figure{margin:0}
-.carteles-rejilla img{width:100%;aspect-ratio:3508/4961;object-fit:cover}
-.carteles-rejilla figcaption{padding-top:10px;color:var(--gris)}
-.pantallas{display:grid;grid-template-columns:3fr 1fr;gap:clamp(16px,2vw,28px);align-items:end;background:var(--linea);padding:clamp(16px,3vw,48px)}
-.pantallas img{width:100%;box-shadow:0 10px 40px rgba(0,0,0,.18)}
-.pantallas .movil{border-radius:18px}
-.boton{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border:1px solid var(--tinta);border-radius:999px}
-.boton:hover{background:var(--tinta);color:var(--papel)}
-.siguiente{margin-top:clamp(96px,12vw,180px);padding:0 var(--g)}
+.contacto{padding-bottom:28px}
+.hablemos{display:block;text-align:center;font:700 21.5cqw/.85 var(--titulo);white-space:nowrap;padding:clamp(20px,3vw,40px) 0 clamp(28px,4vw,56px)}
+.pie{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px 28px;border-top:1px solid var(--linea);padding-top:16px}
+.pie div{display:flex;gap:10px 28px;flex-wrap:wrap}
 
 @media (max-width:760px){
-  .lienzo-carteles,.franja{display:flex;overflow-x:auto;scroll-snap-type:x mandatory}
-  .lienzo-carteles img,.franja img{flex:0 0 62%;width:62%;scroll-snap-align:center}
-  .contexto,.dos,.pantallas{grid-template-columns:1fr}
-  .pantallas .movil{max-width:260px;margin:0 auto}
+  .sobre{grid-template-columns:1fr}
+  .sobre .lista{grid-column:1}
 }
 
-/* enlace de texto subrayado (sustituye a los botones de enlace) */
+/* ---------- cabecera de las páginas de proyecto ---------- */
+.cab-proy{display:flex;justify-content:space-between;align-items:center;padding:18px var(--g)}
+.cab-proy .marca{height:16px;width:auto}
+
+/* enlaces de texto (Ver la web, redes): sin subrayar, grises al pasar */
 .enlace{text-decoration:none}
 .enlace:hover{color:var(--gris)}
-.pantallas .escritorio{border-radius:12px}
 
 /* =====================================================================
    PLANTILLA DE PROYECTO (la usan todas las páginas que genera generar.py)

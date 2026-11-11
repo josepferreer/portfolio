@@ -1,3 +1,11 @@
 # pruebas y mockups de diseño (no se publican)
 pruebas/
 __pycache__/
+
+# originales del Archivo (pesan mucho): solo se suben las copias de img/archivo/web/
+img/archivo/*.png
+img/archivo/*.jpg
+img/archivo/*.jpeg
+img/archivo/*.webp
+img/archivo/*.PNG
+img/archivo/*.JPG

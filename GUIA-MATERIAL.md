@@ -155,19 +155,18 @@ Cada proyecto elige cómo se ve su tarjeta, sin necesidad de material nuevo:
 
 ## 9. Archivo (imágenes sueltas)
 
-Para cosas que no son un proyecto: un cartel suelto, una prueba, una ilustración, una foto… Salen en la portada, en la sección **Archivo**, en mosaico y sin recortar: cada imagen mantiene su proporción. Al pulsar se abren en grande.
+Para cosas que no son un proyecto: un cartel suelto, una prueba, una ilustración… Salen en la portada, en la sección **Archivo**, en mosaico y sin recortar. Al pulsar se abren en grande.
 
-- **Imágenes:** en `img/archivo/`, en JPG (PNG solo si tiene transparencia), con el lado largo de **1600 px como máximo** y menos de 400 KB. Cualquier proporción vale.
-- **Ficha:** en `proyectos.json`, al mismo nivel que `"proyectos"`, una lista `"archivo"`. Una línea por imagen; el año es opcional. Arriba lo más nuevo.
+1. **Suelta la imagen en `img/archivo/`.** PNG, JPG o WEBP, del tamaño que sea: vale el export directo de Affinity.
+2. **Ejecuta `python generar.py`.** Hace una copia ligera de cada imagen en `img/archivo/web/` (JPG, 1600 px) y la pone en la portada, las más nuevas primero.
+3. **El nombre que se ve sale del nombre del archivo:** `pego-trail-21k.png` → «Pego trail 21k». Para cambiarlo, renombra el archivo y vuelve a generar.
 
-```json
-"archivo": [
-  { "imagen": "img/archivo/cartel-trail.jpg", "nombre": "Pego Trail", "anio": 2026 },
-  { "imagen": "img/archivo/prueba-tipografica.jpg", "nombre": "Prueba tipográfica" }
-]
-```
+**Automático:** si tienes abierto `vigilar.bat` (doble clic), el paso 2 se hace solo: en 2 o 3 segundos la portada ya tiene la imagen, y si la borras, desaparece con su copia.
 
-Mientras la lista esté vacía o no exista, la sección y su enlace del menú no aparecen.
+No hace falta tocar `proyectos.json`. Los originales pesados **no se suben a git**: solo las copias de `web/`. Para quitar una imagen, bórrala de `img/archivo/` y de `img/archivo/web/`.
+
+Si quieres poner año o un nombre distinto sin renombrar, también vale a mano en `proyectos.json`:
+`"archivo": [{ "imagen": "img/archivo/web/pego-trail.jpg", "nombre": "Pego Trail", "anio": 2026 }]`
 
 ---
 

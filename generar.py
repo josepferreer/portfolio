@@ -18,8 +18,60 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent
 DATOS = json.loads((RAIZ / "proyectos.json").read_text(encoding="utf-8"))
 PROYECTOS = DATOS["proyectos"]
-# imágenes sueltas de la sección «Archivo»: [{"imagen": "img/archivo/x.jpg", "nombre": "...", "anio": 2026}]
+# ---------- Archivo: imágenes sueltas ----------
+# Basta con soltar imágenes (PNG, JPG o WEBP, de cualquier tamaño) en img/archivo/.
+# El script hace una copia ligera de cada una en img/archivo/web/ (JPG, lado largo 1600 px)
+# y la saca en la portada, las más nuevas primero. El nombre que se ve sale del nombre del
+# archivo: «pego-trail-21k.png» -> «Pego trail 21k». Los originales no se suben a git.
+# En proyectos.json se puede poner a mano: "archivo": [{"imagen": "...", "nombre": "...", "anio": 2026}]
+CARPETA_ARCHIVO = RAIZ / "img" / "archivo"
+FORMATOS = {".png", ".jpg", ".jpeg", ".webp"}
+
+
+def _slug(texto):
+    import unicodedata
+    t = unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode().lower()
+    return re.sub(r"[^a-z0-9]+", "-", t).strip("-") or "imagen"
+
+
+def _nombre_bonito(stem):
+    t = re.sub(r"[-_]+", " ", stem).strip()
+    return t[:1].upper() + t[1:]
+
+
+def archivo_automatico(ya_puestas):
+    """Lee img/archivo/, prepara la copia web de cada imagen nueva o cambiada y devuelve sus fichas."""
+    if not CARPETA_ARCHIVO.is_dir():
+        return []
+    originales = sorted((f for f in CARPETA_ARCHIVO.iterdir() if f.is_file() and f.suffix.lower() in FORMATOS),
+                        key=lambda f: f.stat().st_mtime, reverse=True)
+    if not originales:
+        return []
+    from PIL import Image
+    web = CARPETA_ARCHIVO / "web"
+    web.mkdir(exist_ok=True)
+    fichas = []
+    for f in originales:
+        destino = web / (_slug(f.stem) + ".jpg")
+        ruta = destino.relative_to(RAIZ).as_posix()
+        if f.relative_to(RAIZ).as_posix() in ya_puestas or ruta in ya_puestas:
+            continue
+        if not destino.exists() or destino.stat().st_mtime < f.stat().st_mtime:
+            im = Image.open(f)
+            im.thumbnail((1600, 1600), Image.LANCZOS)
+            if im.mode in ("RGBA", "LA", "P"):
+                im = im.convert("RGBA")
+                fondo = Image.new("RGB", im.size, "#ECE8E3")
+                fondo.paste(im, mask=im.getchannel("A"))
+                im = fondo
+            im.convert("RGB").save(destino, quality=84, optimize=True, progressive=True)
+            print(f"  archivo: {f.name} -> {ruta} ({destino.stat().st_size // 1024} KB)")
+        fichas.append({"imagen": ruta, "nombre": _nombre_bonito(f.stem)})
+    return fichas
+
+
 ARCHIVO = DATOS.get("archivo", [])
+ARCHIVO = ARCHIVO + archivo_automatico({a["imagen"] for a in ARCHIVO})
 
 FUENTES_BASE = "family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter+Tight:wght@400;700;800"
 
