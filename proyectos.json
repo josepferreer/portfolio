@@ -1,0 +1,407 @@
+{
+  "proyectos": [
+    {
+      "id": "pegopadel",
+      "titulo": "Pàdel Pego",
+      "lema": "Una marca para el pádel de mi pueblo.",
+      "anio": 2026,
+      "tipo": "Proyecto propio",
+      "hice": [
+        "Identidad",
+        "Carteles",
+        "Landing"
+      ],
+      "con": [
+        "Affinity",
+        "HTML y CSS"
+      ],
+      "texto": [
+        "Pego tiene pista y tiene ganas de pádel, pero no tenía una imagen que lo contara. Me inventé un torneo, el Pàdel Open del 12 de diciembre, como excusa para construirle todo lo que necesitaría para salir a la calle.",
+        "Todo en valenciano y con el tono del pueblo: primero el pádel… y después, las cervecitas."
+      ],
+      "tarjeta": {
+        "tipo": "carteles",
+        "fondo": "#1C2014",
+        "imagenes": [
+          "img/padel/agafa-la-pala.jpg",
+          "img/padel/dia-de-partit.jpg",
+          "img/padel/padel-open.jpg",
+          "img/padel/juga-a-pego.jpg"
+        ]
+      },
+      "bloques": [
+        {
+          "tipo": "identidad",
+          "logo": "img/padel/logo.svg",
+          "versiones": [
+            {
+              "nombre": "Principal",
+              "fondo": "#1C2014",
+              "color": "#F3E3B5",
+              "variables": {
+                "--logo-ball": "#E9F542",
+                "--logo-seam": "#1C2014"
+              }
+            },
+            {
+              "nombre": "Sobre azul",
+              "fondo": "#1E5BB8",
+              "color": "#F6F3E2",
+              "variables": {
+                "--logo-ball": "#E9F542",
+                "--logo-seam": "#1C2014"
+              }
+            },
+            {
+              "nombre": "A una tinta",
+              "fondo": "#E9F542",
+              "color": "#1C2014",
+              "variables": {
+                "--logo-ball": "#1C2014",
+                "--logo-seam": "#E9F542"
+              }
+            },
+            {
+              "nombre": "Sobre crema",
+              "fondo": "#F3E3B5",
+              "color": "#1C2014",
+              "variables": {
+                "--logo-ball": "#E9F542",
+                "--logo-seam": "#1C2014"
+              }
+            },
+            {
+              "nombre": "Sobre terracota",
+              "fondo": "#B5532F",
+              "color": "#F6F3E2",
+              "variables": {
+                "--logo-ball": "#F6F3E2",
+                "--logo-seam": "#B5532F"
+              }
+            }
+          ],
+          "colores": [
+            {
+              "nombre": "Groc pilota",
+              "hex": "#E9F542"
+            },
+            {
+              "nombre": "Blau pista",
+              "hex": "#1E5BB8"
+            },
+            {
+              "nombre": "Oliva fosc",
+              "hex": "#1C2014"
+            },
+            {
+              "nombre": "Crema",
+              "hex": "#F3E3B5"
+            },
+            {
+              "nombre": "Terracota",
+              "hex": "#B5532F"
+            },
+            {
+              "nombre": "Blanc línia",
+              "hex": "#F6F3E2"
+            }
+          ],
+          "tipografias": [
+            {
+              "nombre": "Unbounded Bold",
+              "uso": "Logo",
+              "muestra": "pegopadel",
+              "css": "font-family:Unbounded;font-weight:700",
+              "google": "Unbounded:wght@700"
+            },
+            {
+              "nombre": "Instrument Serif",
+              "uso": "Titulares",
+              "muestra": "Dia de partit",
+              "css": "font-family:'Instrument Serif';font-style:italic",
+              "google": "Instrument Serif:ital@0;1"
+            },
+            {
+              "nombre": "Montserrat SemiBold",
+              "uso": "Etiquetas",
+              "muestra": "PÀDEL OPEN · 12.12.26",
+              "peque": true,
+              "css": "font-family:Montserrat;font-weight:600;letter-spacing:.08em",
+              "google": "Montserrat:wght@600"
+            },
+            {
+              "nombre": "Glacial Indifference",
+              "uso": "Texto",
+              "muestra": "Primer el pàdel, després les cervesetes",
+              "peque": true,
+              "css": "font-family:'Glacial Indifference'",
+              "local": "fuentes/GlacialIndifference-Regular.otf"
+            }
+          ]
+        },
+        {
+          "tipo": "piezas",
+          "titulo": "Carteles",
+          "formato": "a3",
+          "items": [
+            {
+              "imagen": "img/padel/agafa-la-pala.jpg",
+              "nombre": "Agafa la pala"
+            },
+            {
+              "imagen": "img/padel/dia-de-partit.jpg",
+              "nombre": "Dia de partit"
+            },
+            {
+              "imagen": "img/padel/padel-open.jpg",
+              "nombre": "Pàdel Open"
+            },
+            {
+              "imagen": "img/padel/gran-premi.jpg",
+              "nombre": "Gran Premi"
+            },
+            {
+              "imagen": "img/padel/juga-a-pego.jpg",
+              "nombre": "Juga a Pego"
+            }
+          ]
+        },
+        {
+          "tipo": "pantallas",
+          "titulo": "Web",
+          "enlace": "https://josepferreer.github.io/pegopadel/",
+          "texto_enlace": "josepferreer.github.io/pegopadel",
+          "escritorio": "img/padel/landing-escritorio.jpg",
+          "movil": "img/padel/landing-movil.jpg"
+        }
+      ]
+    },
+    {
+      "id": "typeroll",
+      "titulo": "Typeroll",
+      "lema": "Una ruleta para las fuentes que nunca usas.",
+      "anio": 2026,
+      "tipo": "Proyecto propio",
+      "hice": [
+        "Diseño",
+        "Desarrollo"
+      ],
+      "con": [
+        "HTML y CSS",
+        "JavaScript"
+      ],
+      "texto": [
+        "Tengo cientos de fuentes instaladas y siempre acababa usando las mismas. Typeroll lee las que tienes en el ordenador y te las enseña emparejadas al azar: fijas la que te gusta y sigues tirando hasta dar con la combinación.",
+        "Sin instalar nada ni crear cuentas, y sin que tus fuentes salgan de tu ordenador."
+      ],
+      "tarjeta": {
+        "tipo": "pantalla",
+        "fondo": "#E4DED0",
+        "imagen": "img/typeroll/principal.jpg"
+      },
+      "bloques": [
+        {
+          "tipo": "identidad",
+          "logo_texto": [
+            {
+              "texto": "Typeroll",
+              "css": "font-family:'Bricolage Grotesque';font-weight:800;font-variation-settings:'opsz' 96;letter-spacing:-.045em"
+            },
+            {
+              "texto": "by josepferreer",
+              "css": "font-family:'Instrument Serif';font-style:italic;font-size:.42em;letter-spacing:.01em;opacity:.6"
+            }
+          ],
+          "versiones": [
+            {
+              "nombre": "Sobre papel",
+              "fondo": "#F4F1EA",
+              "color": "#151515"
+            },
+            {
+              "nombre": "En negativo",
+              "fondo": "#151515",
+              "color": "#F4F1EA"
+            }
+          ],
+          "icono": {
+            "archivo": "img/typeroll/icono.png",
+            "fondo": "#F4F1EA"
+          },
+          "colores": [
+            {
+              "nombre": "Papel",
+              "hex": "#F4F1EA"
+            },
+            {
+              "nombre": "Tinta",
+              "hex": "#151515"
+            }
+          ],
+          "tipografias": [
+            {
+              "nombre": "Bricolage Grotesque ExtraBold",
+              "uso": "Logo",
+              "muestra": "Typeroll",
+              "css": "font-family:'Bricolage Grotesque';font-weight:800;font-variation-settings:'opsz' 96;letter-spacing:-.045em",
+              "google": "Bricolage Grotesque:opsz,wght@12..96,800"
+            },
+            {
+              "nombre": "Instrument Serif",
+              "uso": "Firma",
+              "muestra": "by josepferreer",
+              "css": "font-family:'Instrument Serif';font-style:italic",
+              "google": "Instrument Serif:ital@0;1"
+            }
+          ]
+        },
+        {
+          "tipo": "pantallas",
+          "titulo": "Web",
+          "enlace": "https://josepferreer.github.io/typeroll/",
+          "texto_enlace": "josepferreer.github.io/typeroll",
+          "escritorio": "img/typeroll/principal.jpg",
+          "secciones": [
+            {
+              "imagen": "img/typeroll/cuatro-fuentes.jpg",
+              "nombre": "Cuatro fuentes y colores propios"
+            },
+            {
+              "imagen": "img/typeroll/biblioteca.jpg",
+              "nombre": "Biblioteca"
+            },
+            {
+              "imagen": "img/typeroll/guardadas.jpg",
+              "nombre": "Combinaciones guardadas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "synora",
+      "titulo": "Synora",
+      "lema": "La imagen y la web de una empresa de software.",
+      "anio": 2026,
+      "tipo": "En empresa",
+      "hice": [
+        "Identidad",
+        "Web"
+      ],
+      "con": [
+        "Next.js"
+      ],
+      "texto": [
+        "Synora hace CRM, webs y automatizaciones para pymes. Me encargué de su imagen: la marca y la web synora.es, para que una empresa pequeña se explicara en una sola pantalla."
+      ],
+      "tarjeta": {
+        "tipo": "logo"
+      },
+      "bloques": [
+        {
+          "tipo": "identidad",
+          "logo_texto": [
+            {
+              "texto": "synora.",
+              "css": "font-family:'Instrument Sans';font-style:italic;font-weight:700;letter-spacing:-.028em"
+            }
+          ],
+          "versiones": [
+            {
+              "nombre": "Sobre negro",
+              "fondo": "#07080B",
+              "color": "#FFFFFF"
+            },
+            {
+              "nombre": "Sobre blanco",
+              "fondo": "#FFFFFF",
+              "color": "#07080B"
+            },
+            {
+              "nombre": "Sobre azul",
+              "fondo": "#336DEA",
+              "color": "#FFFFFF"
+            },
+            {
+              "nombre": "Sobre gris",
+              "fondo": "#E6E7EC",
+              "color": "#07080B"
+            },
+            {
+              "nombre": "Sobre rojo",
+              "fondo": "#EA335B",
+              "color": "#FFFFFF"
+            }
+          ],
+          "icono": {
+            "archivo": "img/synora/icono.png",
+            "fondo": "#E6E7EC"
+          },
+          "colores": [
+            {
+              "nombre": "Negro",
+              "hex": "#07080B"
+            },
+            {
+              "nombre": "Blanco",
+              "hex": "#FFFFFF"
+            },
+            {
+              "nombre": "Gris",
+              "hex": "#E6E7EC"
+            },
+            {
+              "nombre": "Azul",
+              "hex": "#336DEA"
+            },
+            {
+              "nombre": "Rojo",
+              "hex": "#EA335B"
+            }
+          ],
+          "tipografias": [
+            {
+              "nombre": "Instrument Sans Bold cursiva",
+              "uso": "Logo",
+              "muestra": "synora.",
+              "css": "font-family:'Instrument Sans';font-style:italic;font-weight:700;letter-spacing:-.028em"
+            },
+            {
+              "nombre": "Manrope ExtraBold",
+              "uso": "Titulares",
+              "muestra": "Necesita trabajar solo.",
+              "css": "font-family:Manrope;font-weight:800;letter-spacing:-.03em",
+              "google": "Manrope:wght@800"
+            },
+            {
+              "nombre": "DM Mono",
+              "uso": "Etiquetas",
+              "muestra": "@SYNORA.SOLUTIONS",
+              "peque": true,
+              "css": "font-family:'DM Mono';letter-spacing:.12em",
+              "google": "DM Mono:wght@400"
+            }
+          ]
+        },
+        {
+          "tipo": "pantallas",
+          "titulo": "Web",
+          "enlace": "https://synora.es/",
+          "texto_enlace": "synora.es",
+          "escritorio": "img/synora/web-inicio.jpg",
+          "movil": "img/synora/web-movil.jpg"
+        }
+      ],
+      "redes": [
+        {
+          "nombre": "Instagram",
+          "url": "https://www.instagram.com/synora.solutions/"
+        },
+        {
+          "nombre": "LinkedIn",
+          "url": "https://www.linkedin.com/company/synora-solutions/"
+        }
+      ]
+    }
+  ]
+}

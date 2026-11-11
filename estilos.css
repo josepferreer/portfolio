@@ -1,0 +1,329 @@
+/* Intink: Inter Tight con tinta corrida (Desktop/intink). Las uniones entre letras
+   salen de la función calt y del espaciado propio de la fuente: no ponerle letter-spacing. */
+@font-face{font-family:"Intink";font-weight:700;font-display:swap;src:url(fuentes/Intink-Bold.woff) format("woff")}
+@font-face{font-family:"Intink";font-weight:400;font-display:swap;src:url(fuentes/Intink-Regular.woff) format("woff")}
+:root{
+    --papel:#ECE8E3;
+    --tinta:#141414;
+    --gris:#77736C;
+    --linea:#CFC9C0;
+    --g:clamp(24px,12vw,260px);
+    --titular:"Inter Tight", "Instrument Sans", system-ui, sans-serif;
+    --titulo:"Intink", "Inter Tight", system-ui, sans-serif;   /* títulos: la fuente con tinta */
+    --sans:"Instrument Sans", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--papel);color:var(--tinta);font:15px/1.5 var(--sans)}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .mayus{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+
+  header{display:flex;justify-content:flex-end;padding:18px var(--g)}
+  header nav{display:flex;gap:28px}
+
+  .portada{min-height:calc(100svh - 56px);display:grid;place-content:center;text-align:center;gap:clamp(22px,3vw,40px);padding:0 var(--g) 56px}
+  .portada .logo{width:min(78vw,1180px);height:auto;margin:0 auto}
+  .portada p{margin:0;line-height:1.9}
+  .portada .debajo{font-weight:600}
+  .portada .debajo span{display:block;font-weight:400}
+
+  section{padding:0 var(--g);margin-top:clamp(80px,10vw,160px)}
+  .cab{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;border-top:1px solid var(--tinta);padding-top:18px;margin-bottom:clamp(28px,4vw,56px)}
+  .titulo{font:700 clamp(40px,6vw,100px)/.92 var(--titulo);margin:0}
+
+  .rejilla{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(36px,4vw,64px) clamp(16px,2vw,28px)}
+  .proyecto.grande{grid-column:1 / -1}
+  .hueco{aspect-ratio:4/3;border:1px dashed var(--linea)}
+  .grande .hueco{aspect-ratio:21/9}
+  .pie-proy{display:grid;grid-template-columns:auto 1fr auto;gap:18px;padding-top:14px;color:var(--gris)}
+
+  .sobre{display:grid;grid-template-columns:6fr 1fr 5fr;gap:28px}
+  .sobre .texto{grid-column:1}
+  .sobre .lista{grid-column:3}
+  .hueco-texto{height:12px;background:var(--linea);margin-bottom:14px}
+
+  .contacto{padding-bottom:28px}
+  .hablemos{display:block;text-align:center;font:700 21.5cqw/.85 var(--titulo);white-space:nowrap;padding:clamp(20px,3vw,40px) 0 clamp(28px,4vw,56px)}
+  .pie{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px 28px;border-top:1px solid var(--linea);padding-top:16px}
+  .pie div{display:flex;gap:10px 28px;flex-wrap:wrap}
+
+  @media (max-width:760px){
+    .rejilla{grid-template-columns:1fr}
+    .sobre{grid-template-columns:1fr}
+    .sobre .lista{grid-column:1}
+  }
+
+/* ---------- tarjeta con carteles (portada) ---------- */
+a.proyecto{display:block}
+.lienzo-carteles{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,1.2vw,20px);padding:clamp(16px,2.4vw,40px);background:#1C2014}
+.lienzo-carteles img{width:100%;aspect-ratio:3508/4961;object-fit:cover}
+.pie-proy .nombre{color:var(--tinta);font:700 clamp(22px,2vw,30px)/1 var(--titulo);letter-spacing:0;text-transform:none}
+.pie-proy{align-items:baseline}
+.etiquetas{margin:6px 0 0;color:var(--gris)}
+
+/* ---------- página de proyecto ---------- */
+.cab-proy{display:flex;justify-content:space-between;align-items:center;padding:18px var(--g)}
+.cab-proy .volver{display:inline-flex;align-items:center;gap:10px}
+.cab-proy .marca{height:16px;width:auto}
+.portada-proy{padding:clamp(48px,8vw,120px) var(--g) clamp(28px,4vw,56px)}
+.portada-proy .titulo-proy{font:700 clamp(64px,12vw,200px)/.88 var(--titulo);margin:0}
+.portada-proy .lema{font:400 clamp(20px,2.2vw,32px)/1.2 var(--titular);letter-spacing:-.01em;margin:clamp(16px,2vw,28px) 0 0}
+.franja{background:#1C2014;padding:clamp(20px,3vw,48px) var(--g);display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,1.2vw,20px)}
+.franja img{width:100%;aspect-ratio:3508/4961;object-fit:cover}
+
+.ficha{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:24px 28px;padding:clamp(28px,4vw,56px) var(--g) 0}
+.ficha div{border-top:1px solid var(--linea);padding-top:12px}
+.ficha dt{color:var(--gris);margin-bottom:6px}
+.ficha dd{margin:0;line-height:1.6}
+.ficha a{text-decoration:underline;text-underline-offset:3px}
+
+.contexto{display:grid;grid-template-columns:4fr 8fr;gap:28px;padding:clamp(64px,8vw,120px) var(--g) 0}
+.contexto p{margin:0;font:400 clamp(20px,2.2vw,32px)/1.3 var(--titular);letter-spacing:-.01em}
+.contexto p+p{margin-top:.7em}
+
+.parte{margin-top:clamp(80px,10vw,160px)}
+.parte .cab{align-items:baseline}
+.parte .cab .num{color:var(--gris)}
+.parte .nota{color:var(--gris);max-width:none;margin:0}
+.dos{display:grid;grid-template-columns:7fr 5fr;gap:clamp(16px,2vw,28px);align-items:start}
+.dos img{width:100%}
+.lado{display:grid;gap:22px}
+.lado div{border-top:1px solid var(--linea);padding-top:12px}
+.lado p{margin:6px 0 0;color:var(--gris)}
+.paleta{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.paleta span{display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:1;padding:8px;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.carteles-rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(16px,2vw,28px)}
+.carteles-rejilla figure{margin:0}
+.carteles-rejilla img{width:100%;aspect-ratio:3508/4961;object-fit:cover}
+.carteles-rejilla figcaption{padding-top:10px;color:var(--gris)}
+.pantallas{display:grid;grid-template-columns:3fr 1fr;gap:clamp(16px,2vw,28px);align-items:end;background:var(--linea);padding:clamp(16px,3vw,48px)}
+.pantallas img{width:100%;box-shadow:0 10px 40px rgba(0,0,0,.18)}
+.pantallas .movil{border-radius:18px}
+.boton{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border:1px solid var(--tinta);border-radius:999px}
+.boton:hover{background:var(--tinta);color:var(--papel)}
+.siguiente{margin-top:clamp(96px,12vw,180px);padding:0 var(--g)}
+
+@media (max-width:760px){
+  .lienzo-carteles,.franja{display:flex;overflow-x:auto;scroll-snap-type:x mandatory}
+  .lienzo-carteles img,.franja img{flex:0 0 62%;width:62%;scroll-snap-align:center}
+  .contexto,.dos,.pantallas{grid-template-columns:1fr}
+  .pantallas .movil{max-width:260px;margin:0 auto}
+}
+
+/* enlace de texto subrayado (sustituye a los botones de enlace) */
+.enlace{text-decoration:none}
+.enlace:hover{color:var(--gris)}
+.pantallas .escritorio{border-radius:12px}
+
+/* =====================================================================
+   PLANTILLA DE PROYECTO (la usan todas las páginas que genera generar.py)
+   Fijos: cabecera · ficha y texto · siguiente
+   Opcionales: identidad · piezas · pantallas
+   ===================================================================== */
+.p-cab{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;padding:clamp(56px,8vw,120px) var(--g) clamp(28px,4vw,48px)}
+.p-cab h1{font:700 clamp(56px,11vw,190px)/.88 var(--titulo);margin:0}
+.p-cab .lema{grid-column:1 / -1;font:400 clamp(20px,2.2vw,32px)/1.2 var(--titular);letter-spacing:-.01em;margin:0}
+.p-cab .meta{color:var(--gris);text-align:right}
+
+.p-ficha{display:grid;grid-template-columns:4fr 8fr;gap:28px;padding:clamp(48px,6vw,96px) var(--g) 0}
+.p-ficha dl{margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:20px 28px;align-content:start}
+.p-ficha dl div{border-top:1px solid var(--linea);padding-top:10px}
+.p-ficha dt{color:var(--gris);margin-bottom:6px}
+.p-ficha dd{margin:0;line-height:1.6}
+.p-ficha .texto p{margin:0;font:400 clamp(19px,1.9vw,28px)/1.35 var(--titular);letter-spacing:-.01em}
+.p-ficha .texto p+p{margin-top:.7em}
+
+.p-bloque{padding:0 var(--g);margin-top:clamp(96px,11vw,170px)}
+.p-bloque>.cab{align-items:baseline}
+.p-bloque>.cab .num{color:var(--gris)}
+
+/* identidad */
+.logos{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1vw,16px)}
+.logos figure{margin:0}
+.logos .fondo{aspect-ratio:16/10;display:grid;place-items:center}
+.logos .fondo.borde,.colores .borde{outline:1px solid var(--linea);outline-offset:-1px}
+.logos svg{width:62%;height:auto}
+.logos .icono svg{width:34%}
+.logos figcaption{padding-top:8px;color:var(--gris)}
+.sub{display:grid;grid-template-columns:4fr 8fr;gap:28px;margin-top:clamp(40px,5vw,72px);border-top:1px solid var(--linea);padding-top:14px}
+.sub>span{color:var(--gris)}
+.colores{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,110px),1fr));gap:8px}
+.colores div{height:clamp(110px,11vw,170px);display:flex;flex-direction:column;justify-content:flex-end;padding:10px;font-size:11px;line-height:1.4}
+.colores b{font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:10px}
+.tipos div{display:grid;grid-template-columns:3fr 2fr;gap:20px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--linea)}
+.tipos div:first-child{padding-top:0}
+.tipos .muestra{font-size:clamp(28px,3.4vw,52px);line-height:1.1}
+.tipos .muestra.peque{font-size:clamp(18px,2vw,28px)}
+.tipos .dato{color:var(--gris)}
+.tipos .dato b{display:block;color:var(--tinta);font-weight:500}
+
+/* piezas: a3 · post (4:5) · story (9:16) · cuadrado */
+.piezas{display:grid;gap:clamp(12px,1.6vw,24px)}
+.piezas.a3{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.piezas.post{grid-template-columns:repeat(6,1fr)}
+.piezas.story{grid-template-columns:repeat(5,1fr)}
+.piezas.cuadrado{grid-template-columns:repeat(4,1fr)}
+.piezas.retrato{grid-template-columns:repeat(6,1fr)}
+.piezas figure{margin:0}
+.piezas img{width:100%;object-fit:cover;cursor:zoom-in;transition:opacity .2s}
+.piezas img:hover{opacity:.9}
+.piezas.a3 img{aspect-ratio:3508/4961}
+.piezas.post img{aspect-ratio:4/5}
+.piezas.story img{aspect-ratio:9/16;border-radius:10px}
+.piezas.cuadrado img{aspect-ratio:1}
+.piezas.retrato img{aspect-ratio:3/4}
+.piezas figcaption{padding-top:8px;color:var(--gris)}
+
+/* pantallas */
+.ir-web{display:flex;gap:18px;align-items:baseline;flex-wrap:wrap;margin:-12px 0 clamp(20px,2.4vw,32px)}
+.ir-web span{color:var(--gris)}
+.p-pantallas{display:grid;grid-template-columns:3fr 1fr;gap:clamp(16px,2vw,28px);align-items:end;background:var(--linea);padding:clamp(16px,3vw,48px)}
+.p-pantallas img{width:100%;box-shadow:0 10px 40px rgba(0,0,0,.18);border-radius:12px}
+.p-pantallas .movil{border-radius:18px}
+.p-pantallas.sin-movil{grid-template-columns:1fr}
+.secciones{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,24px);margin-top:clamp(12px,1.6vw,24px)}
+.secciones figure{margin:0}
+.secciones img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:12px}
+.secciones figcaption{padding-top:8px;color:var(--gris)}
+
+/* siguiente */
+.p-siguiente{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;border-top:1px solid var(--tinta);
+             margin:clamp(96px,11vw,170px) var(--g) 0;padding:16px 0 28px}
+.p-siguiente .nombre{display:block;font:700 clamp(44px,6.5vw,104px)/.9 var(--titulo);margin-top:8px;color:var(--tinta);text-transform:none;letter-spacing:0}
+.p-siguiente .gris{color:var(--gris)}
+
+/* visor: las piezas se abren en grande */
+.visor{border:0;padding:0;margin:0;width:100vw;height:100dvh;max-width:none;max-height:none;background:rgba(20,20,20,.94);color:#ECE8E3}
+.visor::backdrop{background:transparent}
+.visor[open]{display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto 1fr auto;align-items:center}
+.visor figure{grid-column:2;grid-row:2;margin:0;height:100%;display:grid;place-items:center;min-height:0;padding:8px}
+.visor img{max-width:100%;max-height:calc(100dvh - 140px);object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.visor .pie{grid-column:1 / -1;grid-row:3;display:flex;justify-content:center;gap:16px;padding:14px 0 22px;border:0;color:#ECE8E3}
+.visor .pie span:last-child{color:#9a968e}
+.redondo{width:48px;height:48px;border-radius:50%;border:1px solid rgba(236,232,227,.35);background:none;color:inherit;display:grid;place-items:center;cursor:pointer;margin:0 clamp(8px,2vw,28px)}
+.redondo:hover{border-color:#ECE8E3}
+.redondo:focus{outline:none}
+.redondo:focus-visible{outline:1px solid #ECE8E3;outline-offset:3px}
+.redondo svg{width:18px;height:18px}
+.visor .cerrar{grid-column:3;grid-row:1;margin-top:16px;justify-self:end}
+.visor .ant{grid-column:1;grid-row:2}
+.visor .sig{grid-column:3;grid-row:2}
+.visor.uno .ant,.visor.uno .sig{visibility:hidden}
+
+/* tarjetas de la portada (la cubierta cambia según el proyecto) */
+.tarjetas{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(36px,4vw,64px) clamp(16px,2vw,28px)}
+.tarjeta{display:block}
+.tarjeta.grande{grid-column:1 / -1}
+.tarjeta .cubierta{aspect-ratio:4/3;overflow:hidden;display:grid;place-items:center;padding:clamp(16px,2.4vw,40px)}
+.tarjeta.grande .cubierta{aspect-ratio:auto}
+.tarjeta .fila{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:clamp(8px,1.2vw,20px);width:100%;align-items:end}
+.tarjeta .fila img{width:100%;aspect-ratio:3508/4961;object-fit:cover}
+.tarjeta .pantalla{width:82%;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+.tarjeta .cubierta.foto{padding:0}
+.tarjeta .cubierta.foto img{width:100%;height:100%;object-fit:cover}
+.tarjeta .cubierta svg{width:62%;height:auto}
+
+@media (max-width:760px){
+  .p-ficha,.sub{grid-template-columns:1fr}
+  .p-ficha dl{grid-template-columns:1fr 1fr}
+  .logos{grid-template-columns:1fr 1fr}
+  .tipos div{grid-template-columns:1fr}
+  .piezas.post,.piezas.retrato{grid-template-columns:repeat(3,1fr)}
+  .piezas.story,.piezas.cuadrado{grid-template-columns:repeat(2,1fr)}
+  .p-pantallas{grid-template-columns:1fr}
+  .p-pantallas .movil{max-width:240px;margin:0 auto}
+  .secciones{grid-template-columns:1fr 1fr}
+  .visor .ant,.visor .sig{grid-row:3;align-self:center}
+  .visor .pie{grid-column:2}
+  .visor figure{grid-column:1 / -1}
+  .visor img{max-height:calc(100dvh - 170px)}
+  .tarjetas{grid-template-columns:1fr}
+  .tarjeta .fila{display:flex;overflow-x:auto;scroll-snap-type:x mandatory}
+  .tarjeta .fila img{flex:0 0 62%;width:62%;scroll-snap-align:center}
+}
+
+/* logo hecho con texto (identidad sin SVG) */
+.logo-texto{display:inline-flex;align-items:baseline;gap:.2em;font-size:clamp(26px,3.4vw,54px);line-height:1;white-space:nowrap}
+.tarjeta .cubierta .logo-texto{font-size:clamp(40px,6vw,96px)}
+.logos .icono img{width:34%;height:auto}
+
+.secciones img{cursor:zoom-in;transition:opacity .2s}
+.secciones img:hover{opacity:.9}
+
+/* «Hablemos» llena justo el ancho del contenido (la palabra mide 4,54 veces su cuerpo en Intink) */
+.contacto{container-type:inline-size}
+/* el logo de texto se ajusta al recuadro donde va */
+.logos .fondo{container-type:inline-size}
+.logos .logo-texto{font-size:min(11cqw,54px)}
+.ir-web span{overflow-wrap:anywhere}
+
+/* que los pies largos no ensanchen las columnas en móviles pequeños */
+.piezas figure,.secciones figure{min-width:0}
+.piezas figcaption,.secciones figcaption{overflow-wrap:anywhere}
+
+/* versiones del logo: la última fila se reparte para no dejar huecos */
+.logos{grid-template-columns:repeat(6,1fr)}
+.logos figure{grid-column:span 2}
+.logos figure:nth-last-child(2):nth-child(3n+1),.logos figure:last-child:nth-child(3n+2){grid-column:span 3}
+.logos figure:last-child:nth-child(3n+1){grid-column:1 / -1}
+.logos figure:last-child:nth-child(3n+1) .fondo{aspect-ratio:32/10}
+@media (max-width:760px){
+  .logos{grid-template-columns:1fr 1fr}
+  .logos figure,.logos figure:nth-last-child(2):nth-child(3n+1),.logos figure:last-child:nth-child(3n+2),.logos figure:last-child:nth-child(3n+1){grid-column:auto}
+  .logos figure:last-child:nth-child(odd){grid-column:1 / -1}
+  .logos figure .fondo,.logos figure:last-child:nth-child(3n+1) .fondo{aspect-ratio:16/10}
+  .logos figure:last-child:nth-child(odd) .fondo{aspect-ratio:32/10}
+}
+
+/* Sobre mí */
+.sobre .texto p{margin:0;font:400 clamp(20px,2.1vw,32px)/1.3 var(--titular);letter-spacing:-.01em}
+.sobre .texto p+p{margin-top:.8em}
+.cv{margin:0 0 clamp(28px,3vw,44px)}
+.cv dt{color:var(--gris);border-bottom:1px solid var(--linea);padding-bottom:10px;margin-bottom:4px}
+.cv dd{margin:0;display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:12px 0;border-bottom:1px solid var(--linea)}
+.cv dd b{font-weight:600}
+.cv dd span{grid-column:1;color:var(--gris)}
+.cv dd .anio{grid-column:2;grid-row:1;color:var(--gris);white-space:nowrap;font-variant-numeric:tabular-nums}
+.cv dd.etiq{display:block;line-height:1.7}
+
+/* enlaces de la ficha (redes, enlace al proyecto) sin subrayar */
+.p-ficha dd a,.p-ficha dd a.enlace{text-decoration:none}
+.p-ficha dd a:hover{color:var(--gris)}
+
+/* =====================================================================
+   MOVIMIENTO (con movimiento.js). Todo depende de html.mov, que solo se pone
+   si el sistema no pide reducir el movimiento.
+   ===================================================================== */
+html.mov{scroll-behavior:smooth}
+
+/* 1. aparecer al bajar */
+.mov .rv{opacity:0;transform:translateY(28px)}
+.mov .rv.visto{opacity:1;transform:none;
+  transition:opacity .8s ease var(--d,0s),transform 1s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+
+/* 2. entrada de la portada y de la cabecera de proyecto */
+@keyframes subir{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.mov .portada > *{animation:subir 1.1s cubic-bezier(.2,.7,.2,1) both}
+.mov .portada > :nth-child(1){animation-delay:.1s}
+.mov .portada > :nth-child(2){animation-delay:.25s}
+.mov .portada > :nth-child(3){animation-delay:.45s}
+
+/* 3. cambio de página: fundido y el nombre del proyecto viaja de la tarjeta al título */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:salir .35s ease both}
+::view-transition-new(root){animation:entrar .5s cubic-bezier(.2,.7,.2,1) .05s both}
+::view-transition-group(*){animation-duration:.6s;animation-timing-function:cubic-bezier(.2,.7,.2,1)}
+@keyframes salir{to{opacity:0;transform:translateY(-12px)}}
+@keyframes entrar{from{opacity:0;transform:translateY(16px)}}
+
+/* 4. detalles: las tarjetas crecen un poco al pasar el ratón */
+.tarjeta .cubierta > *{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.tarjeta:hover .cubierta > *{transform:scale(1.03)}
+.tarjeta .nombre{transition:color .3s}
+.tarjeta:hover .nombre{color:var(--gris)}
+
+@media (prefers-reduced-motion:reduce){
+  ::view-transition-group(*),::view-transition-old(root),::view-transition-new(root){animation:none}
+  .tarjeta .cubierta > *{transition:none}
+  .tarjeta:hover .cubierta > *{transform:none}
+}
