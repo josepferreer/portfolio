@@ -153,7 +153,25 @@ Cada proyecto elige cómo se ve su tarjeta, sin necesidad de material nuevo:
 
 ---
 
-## 9. Lista antes de generar
+## 9. Archivo (imágenes sueltas)
+
+Para cosas que no son un proyecto: un cartel suelto, una prueba, una ilustración, una foto… Salen en la portada, en la sección **Archivo**, en mosaico y sin recortar: cada imagen mantiene su proporción. Al pulsar se abren en grande.
+
+- **Imágenes:** en `img/archivo/`, en JPG (PNG solo si tiene transparencia), con el lado largo de **1600 px como máximo** y menos de 400 KB. Cualquier proporción vale.
+- **Ficha:** en `proyectos.json`, al mismo nivel que `"proyectos"`, una lista `"archivo"`. Una línea por imagen; el año es opcional. Arriba lo más nuevo.
+
+```json
+"archivo": [
+  { "imagen": "img/archivo/cartel-trail.jpg", "nombre": "Pego Trail", "anio": 2026 },
+  { "imagen": "img/archivo/prueba-tipografica.jpg", "nombre": "Prueba tipográfica" }
+]
+```
+
+Mientras la lista esté vacía o no exista, la sección y su enlace del menú no aparecen.
+
+---
+
+## 10. Lista antes de generar
 
 - [ ] Carpeta `img/<id>/` con nombres en minúsculas, sin espacios ni acentos
 - [ ] Cada imagen a su medida y por debajo de 600 KB

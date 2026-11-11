@@ -327,3 +327,11 @@ html.mov{scroll-behavior:smooth}
   .tarjeta .cubierta > *{transition:none}
   .tarjeta:hover .cubierta > *{transform:none}
 }
+
+/* ARCHIVO: imágenes sueltas en mosaico, cada una con su proporción (sin recortar) */
+.archivo{columns:4 240px;column-gap:clamp(12px,1.6vw,24px)}
+.archivo figure{break-inside:avoid;margin:0 0 clamp(16px,2vw,28px)}
+.archivo img{width:100%;height:auto;cursor:zoom-in;transition:opacity .2s}
+.archivo img:hover{opacity:.9}
+.archivo figcaption{padding-top:8px;color:var(--gris);overflow-wrap:anywhere}
+@media (max-width:760px){.archivo{columns:2}}

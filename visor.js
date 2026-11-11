@@ -15,7 +15,7 @@
     visor.classList.toggle('uno', grupo.length < 2);
   }
 
-  document.querySelectorAll('.piezas, .secciones').forEach(g => {
+  document.querySelectorAll('.piezas, .secciones, .archivo').forEach(g => {
     const figs = [...g.querySelectorAll('figure')];
     figs.forEach((f, i) => f.querySelector('img').addEventListener('click', () => {
       grupo = figs;

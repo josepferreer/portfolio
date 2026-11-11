@@ -11,7 +11,7 @@
     '.p-ficha dl > div', '.p-ficha .texto p', '.p-cab .lema',
     '.logos figure', '.sub', '.piezas figure', '.secciones figure',
     '.ir-web', '.p-pantallas', '.p-siguiente',
-    '.sobre .texto p', '.cv', '.hablemos', '.contacto .pie'
+    '.archivo figure', '.sobre .texto p', '.cv', '.hablemos', '.contacto .pie'
   ].join(',');
 
   const elementos = [...document.querySelectorAll(QUE)];

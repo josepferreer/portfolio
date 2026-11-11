@@ -18,6 +18,8 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent
 DATOS = json.loads((RAIZ / "proyectos.json").read_text(encoding="utf-8"))
 PROYECTOS = DATOS["proyectos"]
+# imágenes sueltas de la sección «Archivo»: [{"imagen": "img/archivo/x.jpg", "nombre": "...", "anio": 2026}]
+ARCHIVO = DATOS.get("archivo", [])
 
 FUENTES_BASE = "family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter+Tight:wght@400;700;800"
 
@@ -225,6 +227,9 @@ def pagina_proyecto(p, i):
 <title>{e(p["titulo"])} · josepferrer</title>
 <meta name="description" content="{e(p["lema"])}">
 {enlace_fuentes(google, locales)}
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="img/favicon-180.png">
 <link rel="stylesheet" href="estilos.css">
 <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("mov")</script>
 <script src="movimiento.js" defer></script>
@@ -295,7 +300,24 @@ def portada():
     google = [t["google"] for p in PROYECTOS if p["tarjeta"]["tipo"] == "logo"
               for b in p["bloques"] if b["tipo"] == "identidad" for t in b.get("tipografias", []) if t.get("google")]
     html = html.replace("{{FUENTES}}", enlace_fuentes(google) if google else "")
+    html = html.replace("{{ARCHIVO}}", archivo())
+    html = html.replace("{{NAV_ARCHIVO}}", '<a href="#archivo">Archivo</a>' if ARCHIVO else "")
+    html = html.replace("{{VISOR}}", VISOR if ARCHIVO else "")
     return "<!-- Página generada por generar.py: edita plantillas/portada.html -->\n" + html
+
+
+def archivo():
+    """Sección «Archivo» de la portada: imágenes sueltas, en mosaico y sin recortar. Si no hay ninguna, no sale."""
+    if not ARCHIVO:
+        return ""
+    figs = []
+    for a in ARCHIVO:
+        pie = e(a["nombre"]) + (f' · {a["anio"]}' if a.get("anio") else "")
+        figs.append(f'<figure><img src="{a["imagen"]}" alt="{e(a["nombre"])}" loading="lazy">'
+                    f'<figcaption class="mayus">{pie}</figcaption></figure>')
+    return ('<!-- Archivo: imágenes sueltas (lista «archivo» de proyectos.json) -->\n'
+            '  <section id="archivo">\n    <div class="cab"><h2 class="titulo">Archivo</h2></div>\n'
+            f'    <div class="archivo">{"".join(figs)}</div>\n  </section>\n')
 
 
 # ---------- comprobaciones y escritura ----------
@@ -312,6 +334,9 @@ def comprobar():
         for b in p["bloques"]:
             if b["tipo"] not in BLOQUES:
                 faltan.append(f'{p["id"]}: bloque desconocido «{b["tipo"]}»')
+    for a in ARCHIVO:
+        if not (RAIZ / a["imagen"]).exists():
+            faltan.append(f'archivo: falta {a["imagen"]}')
     if faltan:
         raise SystemExit("No se ha generado nada:\n  " + "\n  ".join(faltan))
 
