@@ -9,6 +9,10 @@ Mira cada 2 segundos:
 Cuando algo cambia, espera a que el archivo termine de copiarse y ejecuta generar.py.
 Solo regenera la web en este ordenador: NO sube nada a GitHub.
 """
+import sys
+# la consola de Windows no sabe escribir algunos caracteres (p. ej. japonés): que no rompa el script
+sys.stdout.reconfigure(errors="replace")
+sys.stderr.reconfigure(errors="replace")
 import subprocess
 import sys
 import time
@@ -22,10 +26,18 @@ FORMATOS = {".png", ".jpg", ".jpeg", ".webp"}
 
 def _slug(texto):
     """La misma regla de nombres que usa generar.py para las copias de img/archivo/web/."""
+    import hashlib
     import re
     import unicodedata
     t = unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode().lower()
-    return re.sub(r"[^a-z0-9]+", "-", t).strip("-") or "imagen"
+    t = re.sub(r"[^a-z0-9]+", "-", t).strip("-")
+    return t or "imagen-" + hashlib.md5(texto.encode("utf-8")).hexdigest()[:8]
+
+
+def originales():
+    if not ARCHIVO.is_dir():
+        return set()
+    return {f.stem for f in ARCHIVO.iterdir() if f.is_file() and f.suffix.lower() in FORMATOS}
 
 
 def estado():
@@ -43,22 +55,20 @@ def estado():
     return h
 
 
-def limpiar_copias():
-    """Si borras una imagen de img/archivo/, quita también su copia de img/archivo/web/."""
-    web = ARCHIVO / "web"
-    if not web.is_dir():
-        return
-    vivas = {_slug(f.stem) + ".jpg" for f in ARCHIVO.iterdir() if f.is_file() and f.suffix.lower() in FORMATOS}
-    for c in web.glob("*.jpg"):
-        if c.name not in vivas:
+def limpiar_copias(quitados):
+    """Si borras (o renombras) una imagen de img/archivo/ mientras vigila, quita también su copia de web/.
+    Solo toca copias de originales que estaban y han desaparecido: nunca lo que subas tú a web/."""
+    for stem in quitados:
+        c = ARCHIVO / "web" / (_slug(stem) + ".jpg")
+        if c.exists():
             c.unlink()
             print(f"  quitada la copia {c.name} (ya no está el original)")
 
 
-def generar():
+def generar(quitados=()):
     hora = time.strftime("%H:%M:%S")
     print(f"[{hora}] cambios: generando…")
-    limpiar_copias()
+    limpiar_copias(quitados)
     r = subprocess.run([sys.executable, "-I", str(RAIZ / "generar.py")], cwd=RAIZ, capture_output=True, text=True)
     salida = (r.stdout + r.stderr).strip()
     print("  " + salida.replace("\n", "\n  ") if salida else "  hecho")
@@ -67,6 +77,7 @@ def generar():
 if __name__ == "__main__":
     print("Vigilando img/archivo/, proyectos.json y la portada. Cierra esta ventana para parar.")
     antes = estado()
+    vistos = originales()
     generar()
     while True:
         time.sleep(2)
@@ -81,4 +92,6 @@ if __name__ == "__main__":
                 break
             ahora = otra
         antes = ahora
-        generar()
+        ahora_originales = originales()
+        generar(vistos - ahora_originales)
+        vistos = ahora_originales

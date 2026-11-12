@@ -113,6 +113,7 @@ section{padding:0 var(--g);margin-top:clamp(80px,10vw,160px)}
 .piezas.story{grid-template-columns:repeat(5,1fr)}
 .piezas.cuadrado{grid-template-columns:repeat(4,1fr)}
 .piezas.retrato{grid-template-columns:repeat(6,1fr)}
+.piezas.apaisado{grid-template-columns:repeat(3,1fr)}
 .piezas figure{margin:0}
 .piezas img{width:100%;object-fit:cover;cursor:zoom-in;transition:opacity .2s}
 .piezas img:hover{opacity:.9}
@@ -121,6 +122,7 @@ section{padding:0 var(--g);margin-top:clamp(80px,10vw,160px)}
 .piezas.story img{aspect-ratio:9/16;border-radius:10px}
 .piezas.cuadrado img{aspect-ratio:1}
 .piezas.retrato img{aspect-ratio:3/4}
+.piezas.apaisado img{aspect-ratio:4/3}
 .piezas figcaption{padding-top:8px;color:var(--gris)}
 
 /* pantallas */
@@ -179,6 +181,7 @@ section{padding:0 var(--g);margin-top:clamp(80px,10vw,160px)}
   .tipos div{grid-template-columns:1fr}
   .piezas.post,.piezas.retrato{grid-template-columns:repeat(3,1fr)}
   .piezas.story,.piezas.cuadrado{grid-template-columns:repeat(2,1fr)}
+  .piezas.apaisado{grid-template-columns:1fr}
   .p-pantallas{grid-template-columns:1fr}
   .p-pantallas .movil{max-width:240px;margin:0 auto}
   .secciones{grid-template-columns:1fr 1fr}

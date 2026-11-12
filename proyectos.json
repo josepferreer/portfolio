@@ -286,6 +286,7 @@
       "tipo": "En empresa",
       "hice": [
         "Identidad",
+        "Tarjetas de visita",
         "Web"
       ],
       "con": [
@@ -380,6 +381,25 @@
               "peque": true,
               "css": "font-family:'DM Mono';letter-spacing:.12em",
               "google": "DM Mono:wght@400"
+            }
+          ]
+        },
+        {
+          "tipo": "piezas",
+          "titulo": "Tarjetas de visita",
+          "formato": "apaisado",
+          "items": [
+            {
+              "imagen": "img/synora/tarjetas-frente.jpg",
+              "nombre": "Anverso"
+            },
+            {
+              "imagen": "img/synora/tarjetas-perspectiva.jpg",
+              "nombre": "En perspectiva"
+            },
+            {
+              "imagen": "img/synora/tarjetas-dos-caras.jpg",
+              "nombre": "Anverso y reverso"
             }
           ]
         },

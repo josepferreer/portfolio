@@ -110,6 +110,7 @@ Cada bloque de piezas tiene **un solo formato**. Si tienes carteles y stories, v
 | `a3`: carteles, flyers, cualquier A | 1 : 1,414 (A3, A4…) | **1000 × 1414 px** | 3 a 6 |
 | `post`: publicación de Instagram | 4 : 5 | **1080 × 1350 px** | 6 o 12, que van de 6 en 6 |
 | `retrato`: publicación 3:4 (la cuadrícula nueva de Instagram) | 3 : 4 | **900 × 1200 px** (de originales 1080 × 1440) | 6, 12 o 18, de 6 en 6 |
+| `apaisado`: mockups horizontales (tarjetas, papelería…) | 4 : 3 | **1600 × 1200 px** | 3, 6 o 9, de 3 en 3 |
 | `story`: stories, reels, TikTok | 9 : 16 | **1080 × 1920 px** | 5 o 10, de 5 en 5 |
 | `cuadrado`: post cuadrado, tarjeta | 1 : 1 | **1080 × 1080 px** | 4 u 8, de 4 en 4 |
 

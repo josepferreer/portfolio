@@ -10,6 +10,10 @@ Crea:
 No edites index.html ni las páginas de proyecto a mano: se sobrescriben.
 Lo que se edita es proyectos.json, plantillas/portada.html y estilos.css.
 """
+import sys
+# la consola de Windows no sabe escribir algunos caracteres (p. ej. japonés): que no rompa el script
+sys.stdout.reconfigure(errors="replace")
+sys.stderr.reconfigure(errors="replace")
 import json
 import re
 from html import escape
@@ -29,9 +33,12 @@ FORMATOS = {".png", ".jpg", ".jpeg", ".webp"}
 
 
 def _slug(texto):
+    """Nombre de archivo seguro. Si el nombre no tiene letras latinas (p. ej. «ゴジラ»), uno fijo sacado de él."""
+    import hashlib
     import unicodedata
     t = unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode().lower()
-    return re.sub(r"[^a-z0-9]+", "-", t).strip("-") or "imagen"
+    t = re.sub(r"[^a-z0-9]+", "-", t).strip("-")
+    return t or "imagen-" + hashlib.md5(texto.encode("utf-8")).hexdigest()[:8]
 
 
 def _nombre_bonito(stem):
@@ -45,10 +52,10 @@ def archivo_automatico(ya_puestas):
         return []
     originales = sorted((f for f in CARPETA_ARCHIVO.iterdir() if f.is_file() and f.suffix.lower() in FORMATOS),
                         key=lambda f: f.stat().st_mtime, reverse=True)
-    if not originales:
+    web = CARPETA_ARCHIVO / "web"
+    if not originales and not web.is_dir():
         return []
     from PIL import Image
-    web = CARPETA_ARCHIVO / "web"
     web.mkdir(exist_ok=True)
     fichas = []
     for f in originales:
@@ -66,7 +73,14 @@ def archivo_automatico(ya_puestas):
                 im = fondo
             im.convert("RGB").save(destino, quality=84, optimize=True, progressive=True)
             print(f"  archivo: {f.name} -> {ruta} ({destino.stat().st_size // 1024} KB)")
-        fichas.append({"imagen": ruta, "nombre": _nombre_bonito(f.stem)})
+        fichas.append({"imagen": ruta, "nombre": _nombre_bonito(f.stem), "_fecha": f.stat().st_mtime})
+    # imágenes puestas directamente en web/ (por ejemplo, subidas desde la web de GitHub), sin original
+    hechas = {_slug(f.stem) + ".jpg" for f in originales}
+    for c in web.iterdir():
+        ruta = c.relative_to(RAIZ).as_posix()
+        if c.is_file() and c.suffix.lower() in FORMATOS and c.name not in hechas and ruta not in ya_puestas:
+            fichas.append({"imagen": ruta, "nombre": _nombre_bonito(c.stem), "_fecha": c.stat().st_mtime})
+    fichas.sort(key=lambda x: x.pop("_fecha"), reverse=True)
     return fichas
 
 
